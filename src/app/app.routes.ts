@@ -5,5 +5,9 @@ export const routes: Routes = [
     path:'principal',
     // para cargar mi pagina de manera asyncrona simpre usar este!
     loadComponent: () => import('./principal/principal.page').then(m => m.PrincipalPage)
+  },
+  {
+    path: 'lista-productos',
+    loadComponent: () => import('./lista-productos/lista-productos.page').then( m => m.ListaProductosPage)
   }
 ];
