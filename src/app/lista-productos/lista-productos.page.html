@@ -1,4 +1,5 @@
 <ion-header [translucent]="true">
+
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button menuId="menuPrincipal" ></ion-menu-button>
@@ -6,7 +7,17 @@
     <ion-title>Lista de Productos</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-list>
+  @for (producto of listaProductos; track producto.id) {
+    
+    <ion-item button [routerLink]="['/detalle-producto']">
+      <ion-thumbnail slot="start">
+        <img [src]="producto.imagen"/>
+      </ion-thumbnail>
+    <ion-label>{{producto.nombre}}</ion-label>
+  </ion-item>
+}
+</ion-list>
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
