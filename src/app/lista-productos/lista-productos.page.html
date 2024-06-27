@@ -11,7 +11,7 @@
   <ion-list>
 
     @for (producto of listaProductos; track producto.id) {
-    <ion-item button [routerLink]="['detalle-producto/' + producto.id]">
+    <ion-item button [routerLink]="['/detalle-producto/' + producto.id]">
       <ion-thumbnail slot="start">
         <img [src]="producto.imagen" />
       </ion-thumbnail>

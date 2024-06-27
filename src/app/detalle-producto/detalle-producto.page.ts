@@ -17,6 +17,9 @@ import { ActivatedRoute, RouterLink, Scroll } from '@angular/router';
 import { CarritoComprasService } from '../servicios/carritoCompras.service';
 // import interface 
 import { Producto } from '../interface/Producto';
+import { CarritoTemporalService } from '../servicios/CarritoTemporal.service';
+import { CarritoItem } from '../interface/CarritodeCompras';
+
 
 
 
@@ -31,7 +34,9 @@ export class DetalleProductoPage implements OnInit {
 
   private carritoComprasServicee: CarritoComprasService = inject(CarritoComprasService)
   private activeRoute: ActivatedRoute = inject(ActivatedRoute);
+  private carritoComprasTemporalService: CarritoTemporalService= inject(CarritoTemporalService)
 
+  
   producto: Producto | undefined;
   cantidad: number = 1;
 
@@ -40,7 +45,8 @@ export class DetalleProductoPage implements OnInit {
     // this.consultaProducto()
     this.activeRoute.params.subscribe(params => {
       this.carritoComprasServicee.getProducto(params['id_producto']).subscribe(data => {
-        this.producto = data.data
+        this.producto = data.data;
+        this.verificraItemCarrito();
       })
     })
 
@@ -66,7 +72,42 @@ export class DetalleProductoPage implements OnInit {
       return;
     }
     this.cantidad--
-  };
+  }
+
+  verificraItemCarrito(){
+    if(!this.producto){
+      return
+    }
+
+    const item = this.carritoComprasTemporalService.getItemProducto(this.producto?.id);
+    if(!item){
+      this.cantidad = 0
+    }else{
+      this.cantidad = item?.cantidad; 
+    }
+   
+  }
+
+  agregarCarrito(){
+    if (!this.producto){
+      return;
+    }
+    let item:CarritoItem = {
+      cantidad: this.cantidad,
+      id_producto: this.producto?.id,
+      iva: 0,
+      subtotal:(this.cantidad * this.producto.price),
+      total:0, 
+    }
+
+    item.iva = item.subtotal * 0.15;
+    item.total = item.subtotal + item.iva;
+
+
+    this.carritoComprasTemporalService.agregarProducto(item);
+
+
+  }
 
   ngOnInit() {
   }
