@@ -16,10 +16,13 @@ import { RouterLink } from '@angular/router';
 export class ListaProductosPage implements OnInit {
 
   private carritoComprasService: CarritoComprasService = inject(CarritoComprasService);
+  
   listaProductos:Producto[]=[];
+
   ngOnInit(): void {
       this.consultarProductos();
   }
+
   consultarProductos(){
     this.carritoComprasService.todosProductos().subscribe(data =>{
       this.listaProductos = data.data;

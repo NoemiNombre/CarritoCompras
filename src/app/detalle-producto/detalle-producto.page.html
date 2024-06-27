@@ -1,23 +1,30 @@
 <ion-header [translucent]="true">
-  
+
   <ion-toolbar>
-    <ion-buttons slot="start" [routerLink]="['']">
-    <ion-icon name="heart" aria-hidden="true"></ion-icon>
-  </ion-buttons>
-    <ion-title>detalleProducto</ion-title>
+
+    <ion-buttons slot="start" [routerLink]="['/lista-productos']">
+      <ion-icon :icon="arrow-back-circle-outline"></ion-icon>
+      
+      Atras
+    </ion-buttons>
+    <ion-title>Detalle del Producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">detalleProducto</ion-title>
+      <ion-title size="large">Detalle del Producto</ion-title>
     </ion-toolbar>
   </ion-header>
+<ion-img [src]="producto?.imagen"></ion-img>
+
+<div [innerHTML]="producto?.descripcion"></div>
+
 </ion-content>
 <ion-footer>
-  <ion-button>
-    Agregar al carrito
-    <ion-icon name=""></ion-icon>
+  <ion-button expand="block">
+    <ion-icon :icon="cart-outline"></ion-icon>
+    Agregar al Carrito
   </ion-button>
 </ion-footer>

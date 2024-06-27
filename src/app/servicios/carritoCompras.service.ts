@@ -7,23 +7,25 @@ import { Producto } from '../interface/Producto';
   providedIn: 'root'
 })
 export class CarritoComprasService {
-  baseurl = "https://epico.gob.ec/vehiculo/"
-   private httpClient:HttpClient = inject(HttpClient);
 
-   todosProductos(){
-    return this.httpClient.get<RespuestaProductos>(this.baseurl='productp/all/')
-   }
-   getProducto(id:number){
-    return this.httpClient.get<RespuestaProducto>(this.baseurl='productp/all/+')
+  baseurl = "https://epico.gob.ec/vehiculo/public/api/"
 
-   }
+  private httpClient: HttpClient = inject(HttpClient);
+
+  todosProductos() {
+    return this.httpClient.get<RespuestaProductos>(this.baseurl +'producto/all/')
+  }
+  getProducto(id:number) {
+    return this.httpClient.get<RespuestaProducto>(this.baseurl +'producto/'+id)
+
+  }
 
 
 }
 
-export interface RespuestaProductos extends Respuesta{
+export interface RespuestaProductos extends Respuesta {
   data: Producto[];
 }
-export interface RespuestaProducto extends Respuesta{
+export interface RespuestaProducto extends Respuesta {
   data: Producto
 }
