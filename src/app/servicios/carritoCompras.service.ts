@@ -15,8 +15,8 @@ export class CarritoComprasService {
   todosProductos() {
     return this.httpClient.get<RespuestaProductos>(this.baseurl +'producto/all/')
   }
-  getProducto(id:number) {
-    return this.httpClient.get<RespuestaProducto>(this.baseurl +'producto/'+id)
+  getProducto(id_producto:number) {
+    return this.httpClient.get<RespuestaProducto>(this.baseurl +'producto/'+id_producto)
 
   }
 

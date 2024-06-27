@@ -2,20 +2,21 @@
 
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menuId="menuPrincipal"></ion-menu-button>
+      <ion-menu-button auto-hide="true" menuId="menuPrincipal"></ion-menu-button>
     </ion-buttons>
     <ion-title>Lista de Productos</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <ion-list>
 
-<ion-list>
-
-  @for (producto of listaProductos; track producto.id) {
-  <ion-item button [routerLink]="['/detalle-producto']">
-    <ion-thumbnail slot="start">
-      <img [src]="producto.imagen" />
-    </ion-thumbnail>
-    <ion-label>{{producto.nombre}}</ion-label>
-  </ion-item>
-  }
-</ion-list>
+    @for (producto of listaProductos; track producto.id) {
+    <ion-item button [routerLink]="['detalle-producto/' + producto.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="producto.imagen" />
+      </ion-thumbnail>
+      <ion-label>{{producto.nombre}}</ion-label>
+    </ion-item>
+    }
+  </ion-list>
+</ion-content>
