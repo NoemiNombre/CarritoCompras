@@ -17,4 +17,5 @@ export interface CarritoItem {
     iva: number;
     total: number;
     producto?: string;
+    imagen?: string;
 }

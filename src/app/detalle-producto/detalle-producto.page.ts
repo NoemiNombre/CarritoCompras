@@ -97,7 +97,9 @@ export class DetalleProductoPage implements OnInit {
       id_producto: this.producto?.id,
       iva: 0,
       subtotal:(this.cantidad * this.producto.price),
-      total:0, 
+      total:0,
+      producto: this.producto.nombre,
+      imagen:this.producto.imagen
     }
 
     item.iva = item.subtotal * 0.15;

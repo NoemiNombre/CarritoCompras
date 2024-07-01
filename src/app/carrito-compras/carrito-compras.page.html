@@ -7,16 +7,52 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content color="light" [fullscreen]="true">
+  <!-- view items added to the cart  -->
   <ion-list [inset]="true">
-    <!-- @for (item of carrito.items; track item.id_producto) { -->
+
+    @for (item of carrito?.items; track item.id_producto) {
     <ion-item button>
       <ion-thumbnail slot="start">
-        <!-- <img [src]="item.imagen"> -->
-
+        <img [src]="item.imagen">
       </ion-thumbnail>
-      <ion-label>Pokémon Yellow</ion-label>
+      <ion-label>{{item.producto}}</ion-label>
+      <ion-toolbar>
+        <!-- cantidad button -->
+        <ion-buttons slot="start">
+          <ion-button>
+            {{item.cantidad}}
+          </ion-button>
+        </ion-buttons>
+
+        <!-- total button -->
+        <ion-buttons slot="end">
+          <ion-button>
+            {{item.total}}
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+
     </ion-item>
-    
+    }
+  </ion-list>
+  <!-- list of total value of item  -->
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-input label="Subtotal" [value]="carrito?.subtotal" [readonly]="true">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Iva" [value]="carrito?.iva" [readonly]="true">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Total" [value]="carrito?.total" [readonly]="true">
+      </ion-input>
+    </ion-item>
+
   </ion-list>
 </ion-content>

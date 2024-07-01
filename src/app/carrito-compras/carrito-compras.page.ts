@@ -17,8 +17,10 @@ export class CarritoComprasPage implements OnInit {
 
   private carritoComprasTemporalService: CarritoTemporalService= inject(CarritoTemporalService)
   
-  // public carrito: CarritodeCompras
-  constructor() { }
+  public carrito: CarritodeCompras|undefined; 
+  constructor() {
+    this.carrito = this.carritoComprasTemporalService.carrito;
+   }
 
   ngOnInit() {
   }
