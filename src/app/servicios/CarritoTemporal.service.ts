@@ -28,11 +28,27 @@ export class CarritoTemporalService {
       itemSelect.iva = item.iva;
       itemSelect.total = item.total;
     }
+    this.calcular();
 
   }
   getItemProducto(id_producto: number) {
     const item = this.carrito.items.find(item => item.id_producto == id_producto);
     return item
+  }
+
+  calcular(){
+    this.carrito.iva = 0;
+    this.carrito.subtotal=0;
+    this.carrito.total =0;
+    this.carrito.items.forEach(items =>{
+      this.carrito.subtotal+= items.subtotal;
+      this.carrito.iva+= items.iva;
+      this.carrito.total+= items.total;
+    } );
+
+    this.carrito.subtotal.toFixed(2);
+    this.carrito.iva.toFixed(2);
+    this.carrito.total.toFixed(2);
   }
 
 }

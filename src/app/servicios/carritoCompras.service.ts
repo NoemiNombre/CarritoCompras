@@ -17,7 +17,7 @@ export class CarritoComprasService {
   }
   getProducto(id_producto:number) {
     return this.httpClient.get<RespuestaProducto>(this.baseurl +'producto/'+id_producto)
-
+ 
   }
 
 

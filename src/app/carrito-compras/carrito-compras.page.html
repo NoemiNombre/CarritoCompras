@@ -40,17 +40,17 @@
   <!-- list of total value of item  -->
   <ion-list [inset]="true">
     <ion-item>
-      <ion-input label="Subtotal" [value]="carrito?.subtotal" [readonly]="true">
+      <ion-input label="Subtotal" value="{{carrito?.subtotal | currency}}" [readonly]="true">
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Iva" [value]="carrito?.iva" [readonly]="true">
+      <ion-input label="Iva" value="{{carrito?.iva | currency}}" [readonly]="true">
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Total" [value]="carrito?.total" [readonly]="true">
+      <ion-input label="Total" value="{{carrito?.total | currency}}" [readonly]="true">
       </ion-input>
     </ion-item>
 
