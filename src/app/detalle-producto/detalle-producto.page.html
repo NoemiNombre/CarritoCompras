@@ -10,43 +10,45 @@
     <ion-title>Detalle del Producto</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
 
 
-<ion-card>
+  <ion-card>
 
-  <ion-img [src]="producto?.imagen"></ion-img>
-  <ion-card-header>
-    <ion-card-title>
-      <div [innerHTML]="producto?.nombre"></div>
-    </ion-card-title>
-  </ion-card-header>
+    <ion-img [src]="producto?.imagen"></ion-img>
+    <ion-card-header>
+      <ion-card-title>
+        <div [innerHTML]="producto?.nombre"></div>
+      </ion-card-title>
+    </ion-card-header>
 
-  <ion-card-content>
-    <div [innerHTML]="producto?.descripcion"></div>
-  </ion-card-content>
+    <ion-card-content>
+      <div [innerHTML]="producto?.descripcion"></div>
+    </ion-card-content>
 
-</ion-card>
+  </ion-card>
 
-<ion-toolbar>
-  <!-- plus button -->
-  <ion-buttons slot="start">
-    <ion-button size="Large" (click)="restar()">
-      <ion-icon :icon="remove-circle-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-  <!-- name -->
-  <ion-title [style]="'text-align:center;'">
-    
+  <ion-toolbar>
+    <!-- plus button -->
+    <ion-buttons slot="start">
+      <ion-button size="Large" (click)="restar()">
+        <ion-icon :icon="remove-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- name -->
+    <ion-title [style]="'text-align:center;'">
+
       {{cantidad}}
-    
-  </ion-title>
-  <!-- minus button -->
-  <ion-buttons slot="end">
-    <ion-button size="Large" (click)="sumar()">
-      <ion-icon :icon="add-circle-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-</ion-toolbar>
+
+    </ion-title>
+    <!-- minus button -->
+    <ion-buttons slot="end">
+      <ion-button size="Large" (click)="sumar()">
+        <ion-icon :icon="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-content>
 
 <ion-footer>
 
